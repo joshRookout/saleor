@@ -40,6 +40,7 @@ class SiteSettings(models.Model):
     company_address = models.ForeignKey(
         "account.Address", blank=True, null=True, on_delete=models.CASCADE
     )
+    customer_set_password_url = models.CharField(max_length=255, blank=True, null=True)
     translated = TranslationProxy()
 
     class Meta:
