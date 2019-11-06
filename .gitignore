@@ -17,6 +17,7 @@
 !.testcafe
 !.travis*
 !.tx
+!.jenkins
 *.css
 *.log
 *.pot
