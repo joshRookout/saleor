@@ -1,4 +1,3 @@
-import rook
 import ast
 import os.path
 import warnings
@@ -12,7 +11,11 @@ from django.utils.translation import gettext_lazy as _, pgettext_lazy
 from django_prices.utils.formatting import get_currency_fraction
 from sentry_sdk.integrations.django import DjangoIntegration
 
-rook.start()
+try:
+    import rook
+    rook.start()
+except ImportError:
+    pass
 
 
 def get_list(text):
