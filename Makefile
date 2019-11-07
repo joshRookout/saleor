@@ -6,13 +6,13 @@ build:
 
 
 upload-no-latest:
-    gcloud docker -a
+	gcloud docker -a
 	docker push us.gcr.io/rookout/saleor:${PUBLISH_VERSION}
 
 
 upload: upload-no-latest
 	@if [ ${CIRCLE_BRANCH} = "master" ]; then \
-	    gcloud docker -a; \
+		gcloud docker -a; \
 		docker push us.gcr.io/rookout/saleor:latest; \
 	fi
 
