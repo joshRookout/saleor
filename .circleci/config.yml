@@ -46,9 +46,6 @@ references:
       branches:
         only: master
 
-  docker_login: &docker_login
-    run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-
 
 jobs:
   checkout_code_upver:
@@ -82,7 +79,6 @@ jobs:
       - *setup_workspace
       - *load_version
       - *setup_docker_layer_caching
-      - *docker_login
       - run: apt install make -y
       - run: make build-and-upload
 
