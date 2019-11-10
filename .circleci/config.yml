@@ -99,21 +99,6 @@ jobs:
       - run: export GOOGLE_APPLICATION_CREDENTIALS=/root/demo/gcp-key.json && cd deployment-demo && export env=staging && make install-helm deploy-demo
       - run: export GOOGLE_APPLICATION_CREDENTIALS=/root/demo/gcp-key.json && cd deployment-demo && export env=production && make install-helm deploy-demo
 
-  test_demo_servers_up:
-    docker:
-        - image: google/cloud-sdk:latest
-    working_directory: ~/demo
-    steps:
-      - run: sleep 15 && echo "Checking Staging..."
-#      - run: curl 'http://staging.machina.rookout-demo.com/account/register'g
-#      - run: curl 'http://staging.python.rookout-demo.com/'
-#      - run: curl 'http://staging.java.rookout-demo.com/'
-#      - run: curl 'http://staging.nodejs.rookout-demo.com/'
-      - run: sleep 15 && echo "Checking Production..."
-#      - run: curl 'http://machina.rookout-demo.com/account/register'
-#      - run: curl 'http://python.rookout-demo.com/'
-#      - run: curl 'http://java.rookout-demo.com/'
-#      - run: curl 'http://nodejs.rookout-demo.com/'
 
   notify_slack:
     docker:
