@@ -66,6 +66,6 @@ RUN mkdir -p /app/media /app/static \
 EXPOSE 8000
 ENV PORT 8000
 ENV PYTHONUNBUFFERED 1
-ENV PROCESSES 4
+ENV PROCESSES 1
 
 CMD ["uwsgi", "--ini", "/app/saleor/wsgi/uwsgi.ini"]
