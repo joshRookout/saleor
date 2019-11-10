@@ -11,11 +11,8 @@ from django.utils.translation import gettext_lazy as _, pgettext_lazy
 from django_prices.utils.formatting import get_currency_fraction
 from sentry_sdk.integrations.django import DjangoIntegration
 
-try:
-    import rook
-    rook.start()
-except ImportError:
-    pass
+import rook
+rook.start()
 
 
 def get_list(text):
