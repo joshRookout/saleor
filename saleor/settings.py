@@ -11,8 +11,18 @@ from django.utils.translation import gettext_lazy as _, pgettext_lazy
 from django_prices.utils.formatting import get_currency_fraction
 from sentry_sdk.integrations.django import DjangoIntegration
 
-import rook
-rook.start()
+try:
+    from uwsgidecorators import postfork
+
+    # Run Rookout after the fork
+    @postfork
+    def run_rookout():
+        import rook
+        rook.start()
+except ImportError:
+    # If there's no uWSGI, run Rookout normally
+    import rook
+    rook.start()
 
 
 def get_list(text):
