@@ -1,6 +1,5 @@
 PUBLISH_VERSION=$(shell echo ${NEW_VERSION} | sed 's/inner-999/1/g')
 
-us.gcr.io/rookout/saleor:2.8.1-master
 build:
 	docker build --tag us.gcr.io/rookout/saleor:latest --tag us.gcr.io/rookout/saleor:${PUBLISH_VERSION} .
 
