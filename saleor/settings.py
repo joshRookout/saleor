@@ -296,7 +296,7 @@ if ENABLE_DEBUG_TOOLBAR:
     except ImportError as exc:
         msg = (
             f"{exc} -- Install the missing dependencies by "
-            f"running `pip install -r requirements_dev.txt`"
+            f"running `pip install -r requirements.txt`"
         )
         warnings.warn(msg)
     else:

@@ -105,7 +105,7 @@ jobs:
     working_directory: ~/demo
     steps:
       - run: sleep 15 && echo "Checking Staging..."
-#      - run: curl 'http://staging.machina.rookout-demo.com/account/register'
+#      - run: curl 'http://staging.machina.rookout-demo.com/account/register'g
 #      - run: curl 'http://staging.python.rookout-demo.com/'
 #      - run: curl 'http://staging.java.rookout-demo.com/'
 #      - run: curl 'http://staging.nodejs.rookout-demo.com/'
