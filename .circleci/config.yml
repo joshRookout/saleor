@@ -123,5 +123,5 @@ workflows:
           <<: *filter_master
       - notify_slack:
           requires:
-            - test_demo_servers_up
+            - deploy_demo
           <<: *filter_master
