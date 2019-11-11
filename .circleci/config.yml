@@ -121,10 +121,6 @@ workflows:
           requires:
             - build_and_push_demo_image
           <<: *filter_master
-      - test_demo_servers_up:
-          requires:
-            - deploy_demo
-          <<: *filter_master
       - notify_slack:
           requires:
             - test_demo_servers_up
