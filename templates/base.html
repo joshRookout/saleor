@@ -71,6 +71,11 @@
                 </div>
               </li>
             {% endif %}
+            <li>
+              <a href="{% url "sentry-debug" %}" target="_blank" rel="noopener">
+                Trigger an Error
+              </a>
+            </li>
             {% if user.is_authenticated %}
               {% if user.is_staff or request.impersonator.is_staff %}
                 <li>

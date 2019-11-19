@@ -23,10 +23,19 @@ from .search.urls import urlpatterns as search_urls
 
 handler404 = "saleor.core.views.handle_404"
 
+
 def healthcheck(request):
     return HttpResponse(status=200)
 
+
+def trigger_error(request):
+    zero = 0
+    division_by_zero = 1 / zero
+    return division_by_zero
+
+
 non_translatable_urlpatterns = [
+    url(r"sentry-debug", trigger_error, name="sentry-debug"),
     url(r"^healthz", healthcheck, name="healthz"),
     url(r"^dashboard/", include((dashboard_urls, "dashboard"), namespace="dashboard")),
     url(r"^graphql/", csrf_exempt(GraphQLView.as_view(schema=schema)), name="api"),
