@@ -2,6 +2,8 @@ import ast
 import os.path
 import warnings
 
+import django_opentracing
+from jaeger_client import Config
 import dj_database_url
 import dj_email_url
 import django_cache_url
@@ -645,3 +647,22 @@ PLUGINS = [
 # True to use DraftJS (JSON based), for the 2.0 dashboard
 # False to use the old editor from dashboard 1.0
 USE_JSON_CONTENT = get_bool_from_env("USE_JSON_CONTENT", False)
+
+OPENTRACING_TRACE_ALL = True
+
+config = Config(
+    config={
+        'sampler': {
+            'type': 'const',
+            'param': 1,
+        },
+        'local_agent': {
+            'reporting_host': 'jaeger-agent',
+            'reporting_port': '5775',
+        },
+    },
+    service_name='saleor',
+)
+
+tracer = config.initialize_tracer()
+OPENTRACING_TRACING = django_opentracing.DjangoTracing(tracer)
